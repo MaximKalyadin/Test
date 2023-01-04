@@ -6,7 +6,7 @@ import { FullLayoutComponent } from './container/full-layout/full-layout/full-la
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'publications/edition',
+    redirectTo: 'publication',
     pathMatch: 'full'
   },
   {
@@ -16,8 +16,8 @@ const routes: Routes = [
       title: 'Publications list'
     },
     children: [{
-      path: 'publications',
-      loadChildren: () => import('./modules/publication.module').then(m => m.PublicationModule),
+      path: 'publication',
+      loadChildren: () => import('./modules/publication/publication.module').then(m => m.PublicationModule),
       data: {
         title: 'List'
       }

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {PublicationComponent} from "./publication/publication/publication.component";
-import {PublicationsComponent} from "./publications/publications/publications.component";
+import {PublicationListComponent} from "./publication-list/publication-list.component";
+import {PublicationCardComponent} from "./publication-card/publication-card.component";
 
 const routes: Routes = [{
   path: '',
@@ -10,15 +10,15 @@ const routes: Routes = [{
   },
   children: [
     {
-      path: 'edition',
-      component: PublicationsComponent,
+      path: '',
+      component: PublicationListComponent,
       data: {
         title: 'Publication list'
       },
     },
     {
-      path: 'edition/:id',
-      component: PublicationComponent,
+      path: ':id',
+      component: PublicationCardComponent,
       data: {
         title: 'Publication'
       },
