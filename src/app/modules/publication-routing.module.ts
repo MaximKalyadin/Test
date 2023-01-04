@@ -6,21 +6,24 @@ import {PublicationsComponent} from "./publications/publications/publications.co
 const routes: Routes = [{
   path: '',
   data: {
-    title: 'Playlist'
+    title: 'Publications'
   },
-  children: [{
-    path: ':id',
-    component: PublicationComponent,
-    data: {
-      title: 'Publication'
+  children: [
+    {
+      path: 'edition',
+      component: PublicationsComponent,
+      data: {
+        title: 'Publication list'
+      },
     },
-  }, {
-    path: '',
-    component: PublicationsComponent,
-    data: {
-      title: 'Publication list'
-    },
-  }]
+    {
+      path: 'edition/:id',
+      component: PublicationComponent,
+      data: {
+        title: 'Publication'
+      },
+    }
+  ]
 }];
 
 @NgModule({
