@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Apollo, QueryRef } from 'apollo-angular';
-import { GET_SHORT_PUBLICATION } from '../../../graphql/graphql.queries'
-import { Publication } from '../../../models/publication';
-import {map, Observable} from 'rxjs';
+import axios from 'axios';
+import { environment } from 'src/environments/environment'
+import { GraphqlQueriesService } from 'src/app/services/graphql-queries.service'
+import {PublicationPage} from "../../../models/publication-page";
 
 @Component({
   selector: 'app-publication-list',
@@ -11,32 +11,29 @@ import {map, Observable} from 'rxjs';
 })
 export class PublicationListComponent implements OnInit {
 
-  countPublication = 10;
-  publications: Publication[] = [];
+  publicationPage: PublicationPage[] = [];
 
-  constructor(private apollo: Apollo) { }
+  countPublicationsOnPage = 10;
+
+  constructor(private graphqlService: GraphqlQueriesService) { }
 
   ngOnInit(): void {
-    this.apollo.watchQuery({
-      query: GET_SHORT_PUBLICATION
-    }).valueChanges.subscribe(({ data, error}: any) => {
-      // this.publications = data.publications;
-      console.log(data);
-      console.log(error);
-    })
-    /*this.postsRef = this.apollo.watchQuery<any>({
-      query: GET_SHORT_PUBLICATION,
-      variables: {
-        first: this.countPublication
-      }
-    });
-    this.publications = this.postsRef.valueChanges.pipe(
-      map(result => {
-        console.log(result);
-        return result.data.publications.edges.map((value: { node: any; }) => value.node);
-      })
-    );*/
+    this.getShortPublications("");
+  }
 
+  getShortPublications(cursor: string) {
+    axios.post(environment.baseURL, {
+        query: this.graphqlService.getShortPublication(this.countPublicationsOnPage)
+      }
+    ).then(response => {
+      this.publicationPage.push({
+       publications: response.data.data.publications.edges.map((edge: { node: any; }) => edge.node),
+       page: 1,
+       totalCount: response.data.data.publications.totalCount,
+       pages: response.data.data.publications.pageInfo
+      });
+      console.log(this.publicationPage)
+    });
   }
 
 }

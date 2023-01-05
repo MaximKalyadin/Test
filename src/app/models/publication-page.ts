@@ -5,4 +5,5 @@ export interface PublicationPage {
   publications: Publication[];
   pages: PageInfo;
   totalCount: number;
+  page: number;
 }
