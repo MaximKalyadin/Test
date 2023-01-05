@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {PublicationListComponent} from "./publication-list/publication-list.component";
-import {PublicationCardComponent} from "./publication-card/publication-card.component";
+import { PublicationListComponent } from './publication-list/publication-list.component';
+import { PublicationCardComponent } from './publication-card/publication-card.component';
 
 const routes: Routes = [{
   path: '',
