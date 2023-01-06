@@ -26,22 +26,11 @@
       width: 100%;
 
       .filter__form__field__label {
-        font: 14px Roboto;
+        font: 16px Roboto;
         font-style: normal;
         font-weight: 400;
         line-height: 16px;
         color: #00000066;
-      }
-
-      .filter__form__field__input {
-
-      }
-
-      .filter__form__field__placeholder {
-        font: 16px Roboto;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 19px;
       }
     }
 
@@ -114,4 +103,11 @@
 
 ::ng-deep .mat-form-field.mat-focused .mat-form-field-ripple {
   background-color: #347CFF !important;
+}
+
+::ng-deep .mat-input-element::placeholder .mat-select-placeholder {
+  font: 16px Roboto;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19px;
 }
