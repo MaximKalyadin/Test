@@ -1,0 +1,93 @@
+.container {
+  display: flex;
+  background: #FAFAFA;
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  .title {
+    margin-left: 63px;
+    margin-top: 52px;
+  }
+
+  .list {
+    margin: 118px 457px 242px 63px;
+    width: 100%;
+
+    .list__item {
+      width: 100% !important;
+      height: 90px;
+      position: relative;
+      margin-bottom: 30px;
+
+      .list__item__header {
+        display: flex;
+        position: absolute;
+        font: 20px Roboto;
+        font-weight: 500;
+        line-height: 23px;
+        left: 0;
+        top: 0;
+        .list__item__header__icon {
+          color: #2962FF;
+          cursor: pointer;
+        }
+        .list__item__header__text {
+          margin-right: 20px;
+        }
+      }
+
+      .list__item__line {
+        display: flex;
+        position: absolute;
+        width: 100%;
+        left: 0;
+
+        .list__item__line__info {
+          width: 50%;
+
+          .list__item__line__info__key {
+            margin-right: 104px;
+            font: 16px Roboto;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 24px;
+          }
+          .list__item__line__info__value {
+            font: 16px Roboto;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 24px;
+            color: #2962FF;
+          }
+        }
+      }
+
+      .list__item__divider {
+        border-top-color: #A5A5A5;
+      }
+    }
+  }
+
+  .pagination {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    margin-left: 63px;
+    top: 94%;
+
+    .pagination__arrow {
+      color: #347CFF;
+    }
+
+    .pagination__page {
+      margin: 0 26px;
+      font: 16px Roboto;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 32px;
+    }
+  }
+
+
+}

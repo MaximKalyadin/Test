@@ -1,0 +1,49 @@
+.filter {
+  position: absolute;
+  width: 393px;
+  height: calc(100% - 2px); // 2px - border-top and border-bottom
+  background: #FFFFFF;
+  border: 1px solid #A5A5A5;
+  right: 0;
+
+  .filter__title {
+    margin-top: 52px;
+    margin-left: 32px;
+    position: absolute;
+    font: 24px Roboto;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px;
+  }
+
+  .filter__form {
+    margin: 119px 32px;
+    height: calc(100% - 238px);
+    width: calc(100% - 64px);
+    position: absolute;
+
+    .filter__form__field {
+      width: 100%;
+
+      .filter__form__field__label {
+        font: 14px Roboto;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 16px;
+        color: #00000066;
+      }
+
+      .filter__form__field__input {
+
+      }
+
+      .filter__form__field__placeholder {
+        font: 16px Roboto;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 19px;
+      }
+    }
+
+  }
+}

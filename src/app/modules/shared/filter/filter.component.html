@@ -1,0 +1,24 @@
+<div class="filter">
+  <span class="filter__title">Фильтры</span>
+  <form class="filter__form">
+
+    <mat-form-field class="filter__form__field">
+      <mat-label class="filter__form__field__label">Название</mat-label>
+      <input matInput class="filter__form__field__input">
+      <mat-placeholder class="filter__form__field__placeholder">Название</mat-placeholder>
+    </mat-form-field>
+
+    <mat-form-field class="filter__form__field">
+      <mat-label>Журнал</mat-label>
+      <mat-select [formControl]="journals" multiple>
+        <mat-select-trigger>
+          {{journals.value?.[0] || ''}}
+          <span *ngIf="(journals.value?.length || 0) > 1">
+            (+{{(journals.value?.length || 0) - 1}} {{journals.value?.length === 2 ? 'other' : 'others'}})
+          </span>
+        </mat-select-trigger>
+        <mat-option *ngFor="let journal of journalList" [value]="journal">{{ journal }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</div>

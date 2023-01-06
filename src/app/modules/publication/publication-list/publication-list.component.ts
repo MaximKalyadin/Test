@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import axios from 'axios';
 import { environment } from 'src/environments/environment'
 import { GraphqlQueriesService } from 'src/app/services/graphql-queries.service'
-import {PublicationPage} from "../../../models/publication-page";
+import { PublicationPage } from '../../../models/publication-page';
 
 @Component({
   selector: 'app-publication-list',

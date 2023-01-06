@@ -1,1 +1,31 @@
-<p>publication-list works!</p>
+<div class="container">
+  <span class="title">Catalysis Center Publications</span>
+  <mat-list class="list">
+    <mat-list-item class="list__item">
+      <div class="list__item__header">
+        <span class="list__item__header__text">GO Ms Sheif</span>
+        <mat-icon class="list__item__header__icon" [routerLink]="['/publication', '5']">
+          arrow_forward
+        </mat-icon>
+      </div>
+      <div class="list__item__line">
+        <div class="list__item__line__info">
+          <span class="list__item__line__info__key">Журнал</span>
+          <span class="list__item__line__info__value">Barge</span>
+        </div>
+        <div class="list__item__line__info">
+          <span class="list__item__line__info__key">Издатель</span>
+          <span class="list__item__line__info__value">Port Canaveral</span>
+        </div>
+      </div>
+      <mat-divider class="list__item__divider"></mat-divider>
+    </mat-list-item>
+
+  </mat-list>
+  <div class="pagination">
+    <mat-icon class="pagination__arrow">chevron_left</mat-icon>
+    <span class="pagination__page">3</span>
+    <mat-icon class="pagination__arrow">chevron_right</mat-icon>
+  </div>
+  <app-filter></app-filter>
+</div>

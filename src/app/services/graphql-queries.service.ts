@@ -16,6 +16,7 @@ export class GraphqlQueriesService {
             node {
               id
               journal
+              publisher
               authors
               title
               year

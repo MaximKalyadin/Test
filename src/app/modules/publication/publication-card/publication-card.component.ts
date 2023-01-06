@@ -12,4 +12,8 @@ export class PublicationCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  back() {
+    history.back();
+  }
+
 }
