@@ -9,16 +9,31 @@
     </mat-form-field>
 
     <mat-form-field class="filter__form__field">
-      <mat-label>Журнал</mat-label>
+      <mat-label class="filter__form__field__label">Журнал</mat-label>
       <mat-select [formControl]="journals" multiple>
         <mat-select-trigger>
-          {{journals.value?.[0] || ''}}
-          <span *ngIf="(journals.value?.length || 0) > 1">
-            (+{{(journals.value?.length || 0) - 1}} {{journals.value?.length === 2 ? 'other' : 'others'}})
+          <span *ngIf="(journals.value?.length || 0) == 1" class="filter__form__field__placeholder">
+            {{ journals.value?.[0] || '' }}
+          </span>
+          <span *ngIf="(journals.value?.length || 0) > 1" class="filter__form__field__placeholder">
+            Выбраны {{ journals.value?.length }}
           </span>
         </mat-select-trigger>
         <mat-option *ngFor="let journal of journalList" [value]="journal">{{ journal }}</mat-option>
       </mat-select>
+      <mat-placeholder class="filter__form__field__placeholder">Журнал</mat-placeholder>
     </mat-form-field>
+
+    <div class="filter__form__radio">
+      <span class="filter__form__title__publisher">Издатель</span>
+      <mat-radio-group
+        name="publisherName"
+        class="filter__form__radio__group"
+        [(ngModel)]="publisherCheck">
+        <mat-radio-button class="filter__form__radio__group__button" *ngFor="let publisher of publisherList" [value]="publisher">
+          {{ publisher }}
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
   </form>
 </div>

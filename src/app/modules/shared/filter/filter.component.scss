@@ -45,5 +45,73 @@
       }
     }
 
+    .filter__form__radio {
+      margin-top: 120px;
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+      flex-wrap: wrap;
+
+      .filter__form__title__publisher {
+        font: 14px Roboto;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 19px;
+        width: 100%;
+      }
+
+      .filter__form__radio__group {
+        margin-top: 21px;
+        display: flex;
+        flex-direction: column;
+
+        .filter__form__radio__group__button {
+          margin-bottom: 17px;
+          font: 16px Roboto;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 19px;
+        }
+      }
+    }
+
   }
+}
+
+::ng-deep .mat-select-arrow-wrapper {
+  display: none !important;
+}
+
+::ng-deep .mat-select-panel {
+  position: absolute;
+  top: 35px;
+  right: -40px;
+  min-width: 100% !important;
+}
+
+::ng-deep .mat-radio-button.mat-accent .mat-radio-inner-circle, .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple), .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple, .mat-radio-button.mat-accent:active .mat-radio-persistent-ripple {
+  background: #2962FF;
+}
+
+::ng-deep .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+  border-color: #2962FF;
+}
+
+::ng-deep .mat-primary .mat-pseudo-checkbox-checked, .mat-primary .mat-pseudo-checkbox-indeterminate {
+  background: #2962FF;
+}
+
+::ng-deep .mat-option-text {
+  font: 16px Roboto;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19px;
+}
+
+::ng-deep .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+  color: black;
+}
+
+::ng-deep .mat-form-field.mat-focused .mat-form-field-ripple {
+  background-color: #347CFF !important;
 }
