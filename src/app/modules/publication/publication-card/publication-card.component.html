@@ -3,35 +3,31 @@
     <mat-icon class="back__icon">arrow_back</mat-icon>
     <span class="back__span">Вернуться</span>
   </div>
-  <span class="title">Catalysis Center Publications</span>
+  <span class="title">{{ publication?.title }}</span>
   <div class="card">
     <div class="card__info">
-      <span class="card__info__key">Название</span>
-      <span class="card__info__value">какое то название</span>
-    </div>
-    <div class="card__info">
-      <span class="card__info__key">Авторы</span>
-      <span class="card__info__value">Авторы</span>
-    </div>
-    <div class="card__info">
       <span class="card__info__key">Журнал</span>
-      <span class="card__info__value">название журнала</span>
+      <span class="card__info__value">{{ publication?.journal || '-' }}</span>
     </div>
     <div class="card__info">
       <span class="card__info__key">Кол-во страниц</span>
-      <span class="card__info__value">234</span>
+      <span class="card__info__value">{{ publication?.pages || '-' }}</span>
     </div>
     <div class="card__info">
       <span class="card__info__key">Год издания</span>
-      <span class="card__info__value">2019</span>
+      <span class="card__info__value">{{ publication?.year || '-' }}</span>
     </div>
     <div class="card__info">
       <span class="card__info__key">Издатель</span>
-      <span class="card__info__value">Какое то имя или журнала</span>
+      <span class="card__info__value">{{ publication?.publisher || '-' }}</span>
+    </div>
+    <div class="card__info">
+      <span class="card__info__key">Авторы</span>
+      <span class="card__info__value">{{ publication?.authors || '-' }}</span>
     </div>
     <div class="card__info">
       <span class="card__info__key">Теги</span>
-      <span class="card__info__value">тег 1, тег 2</span>
+      <span class="card__info__value">{{ publication?.tags || '-' }}</span>
     </div>
   </div>
 

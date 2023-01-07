@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { GraphqlQueriesService } from '../../../services/graphql-queries.service';
+import { ActivatedRoute } from '@angular/router';
+import { Publication } from 'src/app/models/publication';
+import axios from 'axios';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-publication-card',
@@ -7,13 +12,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PublicationCardComponent implements OnInit {
 
-  constructor() { }
+  publication!: Publication;
+
+  constructor(private graphqlService: GraphqlQueriesService,
+              private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    const pubId = this.route.snapshot.paramMap.get('id');
+    if (pubId) {
+      this.getPublication(pubId);
+    }
   }
 
   back() {
     history.back();
   }
 
+  getPublication(pubId: string) {
+    axios.post(environment.baseURL, {
+        query: this.graphqlService.getPublicationQuery(pubId)
+      }
+    ).then(response => {
+      this.publication = response.data.data.publications.edges[0]?.node;
+      this.publication.authors = this.publication.authors ? JSON.parse(this.publication.authors).toString() : '';
+      this.publication.tags = this.publication.tags ? JSON.parse(this.publication.tags).toString() : '';
+    });
+  }
 }

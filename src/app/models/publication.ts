@@ -1,5 +1,6 @@
 export interface Publication {
   id: string;
+  pubId: string;
   title: string;
   authors: string;
   journal: string;

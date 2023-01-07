@@ -21,6 +21,7 @@
       margin-bottom: 30px;
 
       .list__item__header {
+        max-width: 100%;
         display: flex;
         position: absolute;
         font: 20px Roboto;
@@ -34,6 +35,9 @@
         }
         .list__item__header__text {
           margin-right: 20px;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
         }
       }
 
@@ -76,10 +80,14 @@
     margin-left: 63px;
     top: 94%;
 
-    .pagination__arrow {
+    .pagination__arrow__active {
       color: #347CFF;
-      cursor: pointer;
     }
+
+    .pagination__arrow__disabled {
+      color: #3C474C;
+    }
+
 
     .pagination__page {
       margin: 0 26px;
