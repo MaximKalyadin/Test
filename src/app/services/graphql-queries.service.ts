@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
+import { FilterService } from './filter.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GraphqlQueriesService {
 
-  constructor() { }
+  constructor(private filterService: FilterService) { }
 
   getPublicationQuery(pubId: string): string {
     return `
@@ -32,10 +33,11 @@ export class GraphqlQueriesService {
     `
   }
 
-  getPublicationsListQuery(first: number, cursor: string = ""): string {
+  getPublicationsListQuery(first: number, cursor: string = ''): string {
     return `
       {
-        publications(first:${first}, after:"${cursor}") {
+        publications(first:${first}, publisher:"~${this.filterService.filter.publisher}",
+        title:"~${this.filterService.filter.title}", after:"${cursor}") {
           totalCount
           edges {
             node {

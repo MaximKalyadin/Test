@@ -1,10 +1,11 @@
 <div class="filter">
   <span class="filter__title">Фильтры</span>
-  <form class="filter__form">
+  <div class="filter__form">
 
     <mat-form-field class="filter__form__field">
       <mat-label class="filter__form__field__label">Название</mat-label>
-      <input matInput class="filter__form__field__input" placeholder="Название">
+      <input matInput id="search" class="filter__form__field__input" placeholder="Название"
+      [value]="filterService.filter.title">
     </mat-form-field>
 
     <mat-form-field class="filter__form__field">
@@ -28,10 +29,11 @@
         name="publisherName"
         class="filter__form__radio__group"
         [(ngModel)]="publisherCheck">
-        <mat-radio-button class="filter__form__radio__group__button" *ngFor="let publisher of publisherList" [value]="publisher">
+        <mat-radio-button class="filter__form__radio__group__button" *ngFor="let publisher of publisherList"
+                          [value]="publisher" (click)="setPublisher(publisher)">
           {{ publisher }}
         </mat-radio-button>
       </mat-radio-group>
     </div>
-  </form>
+  </div>
 </div>

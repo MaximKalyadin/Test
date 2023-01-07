@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment'
 import { GraphqlQueriesService } from 'src/app/services/graphql-queries.service'
 import { PublicationPage } from 'src/app/models/publication-page';
 import { Router } from '@angular/router';
+import { FilterService } from 'src/app/services/filter.service';
 
 const KEY_PAGE = 'keyPage';
 const KEY_PUBLICATION_ARRAY = 'keyPublications';
@@ -16,22 +17,29 @@ const KEY_PUBLICATION_ARRAY = 'keyPublications';
 export class PublicationListComponent implements OnInit {
 
   publicationPage: PublicationPage[] = [];
-  countPublicationsOnPage = 2;
+  countPublicationsOnPage = 5;
   page: number = 0;
   disableNextButton = false;
 
   constructor(private graphqlService: GraphqlQueriesService,
-              private router: Router) { }
+              private router: Router,
+              private filterService: FilterService) { }
 
   ngOnInit(): void {
     const publicationJsonFromLocaleStorage = localStorage.getItem(KEY_PUBLICATION_ARRAY);
     if (publicationJsonFromLocaleStorage) {
       this.publicationPage = JSON.parse(publicationJsonFromLocaleStorage);
       const pageJsonFromLocalStorage = localStorage.getItem(KEY_PAGE);
-      this.page = pageJsonFromLocalStorage ? +JSON.parse(pageJsonFromLocalStorage) : 1;
+      this.page = pageJsonFromLocalStorage ? +JSON.parse(pageJsonFromLocalStorage) : 0;
     } else {
-      this.getPublicationsList("");
+
     }
+
+    this.filterService._filter.subscribe(value => {
+      this.page = 0;
+      this.publicationPage = [];
+      this.getPublicationsList('');
+    });
   }
 
   getPublicationsList(cursor: string) {
@@ -64,6 +72,7 @@ export class PublicationListComponent implements OnInit {
   getItem(pubId: string) {
     localStorage.setItem(KEY_PAGE, JSON.stringify(this.page));
     localStorage.setItem(KEY_PUBLICATION_ARRAY, JSON.stringify(this.publicationPage));
+    localStorage.setItem(this.filterService.keyFilter, JSON.stringify(this.filterService.filter));
     this.router.navigate(['/publication', pubId])
   }
 
