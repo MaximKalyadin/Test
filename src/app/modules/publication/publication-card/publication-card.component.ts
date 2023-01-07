@@ -4,7 +4,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Publication } from 'src/app/models/publication';
 import axios from 'axios';
 import { environment } from 'src/environments/environment';
-import { FilterService } from 'src/app/services/filter.service';
 
 @Component({
   selector: 'app-publication-card',
@@ -16,8 +15,7 @@ export class PublicationCardComponent implements OnInit {
   publication!: Publication;
 
   constructor(private graphqlService: GraphqlQueriesService,
-              private route: ActivatedRoute,
-              private filterService: FilterService) { }
+              private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     const pubId = this.route.snapshot.paramMap.get('id');
@@ -28,7 +26,6 @@ export class PublicationCardComponent implements OnInit {
 
   back() {
     history.back();
-    this.filterService.filter = {...this.filterService.filter, isReload: false}
   }
 
   getPublication(pubId: string) {

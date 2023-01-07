@@ -29,7 +29,7 @@ export class FilterComponent implements OnInit {
         .pipe(
           map((event: any) => event.target.value),
           switchMap((query: string) => {
-            this.filterService.filter = {...this.filterService.filter, title: query, isReload: true}
+            this.filterService.filter = {...this.filterService.filter, title: query}
             return '';
           })
         )
@@ -38,11 +38,13 @@ export class FilterComponent implements OnInit {
   }
 
   setPublisher(publisher: string) {
-    this.filterService.filter = {...this.filterService.filter, publisher: publisher, isReload: true}
+    this.filterService.filter = {...this.filterService.filter, publisher: publisher}
   }
 
+  // не используется в запросе только потому что апи не позволяет сделать фильтрацию по нескольким полям.
+  // показано как было бы это реализовано в простом списке
   setJournals() {
-    this.filterService.filter = {...this.filterService.filter, journals: this.journals.value, isReload: true}
+    this.filterService.filter = {...this.filterService.filter, journals: this.journals.value}
   }
 
 }

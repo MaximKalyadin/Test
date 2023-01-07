@@ -34,6 +34,9 @@ export class GraphqlQueriesService {
   }
 
   getPublicationsListQuery(first: number, cursor: string = ''): string {
+
+
+
     return `
       {
         publications(first:${first}, publisher:"~${this.filterService.filter.publisher}",
