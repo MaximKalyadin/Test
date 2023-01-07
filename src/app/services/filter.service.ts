@@ -7,15 +7,16 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class FilterService {
 
-  public keyFilter = 'keyFilter';
+  _filter!: BehaviorSubject<Filter>;
 
-  _filter: BehaviorSubject<Filter> = new BehaviorSubject<Filter>({
-    publisher: '',
-    title: '',
-    journals: []
-  });
-
-  constructor() { }
+  constructor() {
+    this._filter = new BehaviorSubject<Filter>({
+      publisher: '',
+      title: '',
+      journals: [],
+      isReload: false
+    });
+  }
 
   get filter() {
     return this._filter.getValue();

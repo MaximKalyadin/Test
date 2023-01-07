@@ -32,13 +32,15 @@ export class PublicationListComponent implements OnInit {
       const pageJsonFromLocalStorage = localStorage.getItem(KEY_PAGE);
       this.page = pageJsonFromLocalStorage ? +JSON.parse(pageJsonFromLocalStorage) : 0;
     } else {
-
+      this.getPublicationsList('');
     }
 
     this.filterService._filter.subscribe(value => {
-      this.page = 0;
-      this.publicationPage = [];
-      this.getPublicationsList('');
+      if (value.isReload) {
+        this.page = 0;
+        this.publicationPage = [];
+        this.getPublicationsList('');
+      }
     });
   }
 
@@ -72,7 +74,6 @@ export class PublicationListComponent implements OnInit {
   getItem(pubId: string) {
     localStorage.setItem(KEY_PAGE, JSON.stringify(this.page));
     localStorage.setItem(KEY_PUBLICATION_ARRAY, JSON.stringify(this.publicationPage));
-    localStorage.setItem(this.filterService.keyFilter, JSON.stringify(this.filterService.filter));
     this.router.navigate(['/publication', pubId])
   }
 

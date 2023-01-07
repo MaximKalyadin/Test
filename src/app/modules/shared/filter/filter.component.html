@@ -19,7 +19,7 @@
             Выбраны {{ journals.value?.length }}
           </span>
         </mat-select-trigger>
-        <mat-option *ngFor="let journal of journalList" [value]="journal">{{ journal }}</mat-option>
+        <mat-option (click)="setJournals()" *ngFor="let journal of journalList" [value]="journal">{{ journal }}</mat-option>
       </mat-select>
     </mat-form-field>
 

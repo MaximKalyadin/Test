@@ -19,10 +19,7 @@ export class FilterComponent implements OnInit {
 
   ngOnInit(): void {
     this.initSearch();
-    const filterJsonFromLocaleStorage = localStorage.getItem(this.filterService.keyFilter);
-    if (filterJsonFromLocaleStorage) {
-      this.publisherCheck = this.filterService.filter.publisher;
-    }
+    this.publisherCheck = this.filterService.filter.publisher;
   }
 
   private initSearch() {
@@ -32,7 +29,7 @@ export class FilterComponent implements OnInit {
         .pipe(
           map((event: any) => event.target.value),
           switchMap((query: string) => {
-            this.filterService.filter = {...this.filterService.filter, title: query}
+            this.filterService.filter = {...this.filterService.filter, title: query, isReload: true}
             return '';
           })
         )
@@ -41,7 +38,11 @@ export class FilterComponent implements OnInit {
   }
 
   setPublisher(publisher: string) {
-    this.filterService.filter = {...this.filterService.filter, publisher: publisher}
+    this.filterService.filter = {...this.filterService.filter, publisher: publisher, isReload: true}
+  }
+
+  setJournals() {
+    this.filterService.filter = {...this.filterService.filter, journals: this.journals.value, isReload: true}
   }
 
 }
